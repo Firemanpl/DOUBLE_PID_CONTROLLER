@@ -8,9 +8,9 @@
         {
             "name": "PlatformIO",
             "includePath": [
-                "/home/fireman/Dokumenty/PlatformIO/Projects/Double-Axis-PID-Driver/include",
-                "/home/fireman/Dokumenty/PlatformIO/Projects/Double-Axis-PID-Driver/src",
-                "/home/fireman/Dokumenty/PlatformIO/Projects/Double-Axis-PID-Driver/lib",
+                "/home/fireman/pico/my-projects/DOUBLE_PID_CONTROLLER/include",
+                "/home/fireman/pico/my-projects/DOUBLE_PID_CONTROLLER/src",
+                "/home/fireman/pico/my-projects/DOUBLE_PID_CONTROLLER/lib",
                 "/home/fireman/.platformio/packages/framework-wizio-pico/wizio/pico",
                 "/home/fireman/.platformio/packages/framework-wizio-pico/wizio/newlib",
                 "/home/fireman/.platformio/packages/framework-wizio-pico/SDK/include",
@@ -35,9 +35,9 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "/home/fireman/Dokumenty/PlatformIO/Projects/Double-Axis-PID-Driver/include",
-                    "/home/fireman/Dokumenty/PlatformIO/Projects/Double-Axis-PID-Driver/src",
-                    "/home/fireman/Dokumenty/PlatformIO/Projects/Double-Axis-PID-Driver/lib",
+                    "/home/fireman/pico/my-projects/DOUBLE_PID_CONTROLLER/include",
+                    "/home/fireman/pico/my-projects/DOUBLE_PID_CONTROLLER/src",
+                    "/home/fireman/pico/my-projects/DOUBLE_PID_CONTROLLER/lib",
                     "/home/fireman/.platformio/packages/framework-wizio-pico/wizio/pico",
                     "/home/fireman/.platformio/packages/framework-wizio-pico/wizio/newlib",
                     "/home/fireman/.platformio/packages/framework-wizio-pico/SDK/include",

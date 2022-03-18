@@ -35,10 +35,10 @@ void receive_message(int64_t *TargetXAxis, int64_t *TargetYAxis, uint8_t *Receiv
     if (ReceivedDataFlag == 1)
     {
         ReceivedDataFlag = 0;
-        if (ReceivedData[0] == 'X' && strchr((char *)ReceivedData, 'Y'))
+        if (ReceivedData[0] == 'X' && strchr((const char *)ReceivedData, 'Y'))
         {
-            *TargetXAxis = strtoll((char const *)ReceivedData + 1, &endXarg, 10);
-            *TargetYAxis = strtoll((char *)endXarg + 1, NULL, 10);
+            *TargetXAxis = strtoll((const char *)ReceivedData + 1, &endXarg, 10);
+            *TargetYAxis = strtoll(endXarg + 1, NULL, 10);
             printf("OK X=%ld Y=%ld\n\r", *TargetXAxis, *TargetYAxis);
         }
         else if (ReceivedData[0] == 'C')
