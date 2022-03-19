@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "pico/stdlib.h"
-#include "communication_USB.h"
-#include "communication_USB.h"
+#include "USBcommunication.h"
 #include <string.h>
 
 static uint8_t ReceivedDataFlag;
@@ -11,6 +10,7 @@ const uint8_t BUFFER_LENGTH = 42;
 
 int8_t buffor_start(uint8_t *buffer)
 {
+
     int8_t buffer_index = 0;
     while (true)
     {
@@ -18,7 +18,6 @@ int8_t buffor_start(uint8_t *buffer)
         if (c != PICO_ERROR_TIMEOUT && buffer_index <= BUFFER_LENGTH)
         {
             buffer[buffer_index++] = (c & 0xFF);
-            // printf("%c", buffer[buffer_index]);
             ReceivedDataFlag = 1;
         }
         else
@@ -29,17 +28,16 @@ int8_t buffor_start(uint8_t *buffer)
     return buffer_index;
 }
 
-void receive_message(int64_t *TargetXAxis, int64_t *TargetYAxis, uint8_t *ReceivedData)
+void receive_message(long int *TargetXAxis, long int *TargetYAxis, uint8_t *ReceivedData)
 {
-    static char *endXarg;
+    char *pEnd;
     if (ReceivedDataFlag == 1)
     {
-        ReceivedDataFlag = 0;
-        if (ReceivedData[0] == 'X' && strchr((const char *)ReceivedData, 'Y'))
+        if (ReceivedData[0] == 'X' && strchr((const char *)ReceivedData, 'Y') != NULL)
         {
-            *TargetXAxis = strtoll((const char *)ReceivedData + 1, &endXarg, 10);
-            *TargetYAxis = strtoll(endXarg + 1, NULL, 10);
-            printf("OK X=%ld Y=%ld\n\r", *TargetXAxis, *TargetYAxis);
+            *TargetXAxis = strtol((const char *)ReceivedData + 1, &pEnd, 10);
+            *TargetYAxis = strtol(pEnd + 1, NULL, 10);
+            printf("\nOK X=%ld Y=%ld\n", *TargetXAxis, *TargetYAxis);
         }
         else if (ReceivedData[0] == 'C')
         {
@@ -53,7 +51,8 @@ void receive_message(int64_t *TargetXAxis, int64_t *TargetYAxis, uint8_t *Receiv
         }
         else
         {
-            printf("BAD_SYNTAX!");
+            printf("BAD_SYNTAX!\n");
         }
+        ReceivedDataFlag = 0;
     }
 }
