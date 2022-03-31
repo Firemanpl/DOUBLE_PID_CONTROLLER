@@ -1,9 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "pico/stdlib.h"
-#include "USBcommunication.h"
-#include <string.h>
-
+#include "main.h"
 static uint8_t ReceivedDataFlag;
 extern uint8_t FireFlag;
 const uint8_t BUFFER_LENGTH = 42;
@@ -28,7 +23,7 @@ int8_t buffor_start(uint8_t *buffer)
     return buffer_index;
 }
 
-void receive_message(long int *TargetXAxis, long int *TargetYAxis, uint8_t *ReceivedData)
+void receive_message(int32_t *TargetXAxis, int32_t *TargetYAxis, uint8_t *ReceivedData)
 {
     char *pEnd;
     if (ReceivedDataFlag == 1)
@@ -43,6 +38,7 @@ void receive_message(long int *TargetXAxis, long int *TargetYAxis, uint8_t *Rece
         {
             // calibrate motor function not added yet
             printf("Calibration in progress...\n");
+            // calibrate_motor();
         }
         else if (ReceivedData[0] == 'F')
         {

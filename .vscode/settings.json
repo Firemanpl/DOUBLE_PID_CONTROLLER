@@ -2,6 +2,7 @@
     "files.associations": {
         "stdio.h": "c",
         "inttypes.h": "c",
-        "cstdint": "c"
+        "cstdint": "c",
+        "*.pio": "c"
     }
 }
